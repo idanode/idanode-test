@@ -58,7 +58,7 @@ cat ~/.ssh/id_rsa.pub
 
 ## 2. Install the Source Code
 
-- Download the testnet-builder package from GitHub:
+- Download the idanode-test package from GitHub:
 
 ```
 git clone https://github.com/idanode/idanode-test.git
@@ -67,7 +67,7 @@ git clone https://github.com/idanode/idanode-test.git
 - Get the rest of the packages and install them one by one:
 
 ```
-cd testnet-builder
+cd idanode-test
 git clone https://github.com/idanode/idanode-hub.git
 git clone https://github.com/idanode/idanode-witness.git
 git clone https://github.com/idanode/idanode-headless.git
@@ -84,14 +84,14 @@ cd ../genesis-scripts
 npm install
 ```
 
-- Create a `data` folder in your `~/testnet-builder` directory:
+- Create a `data` folder in your `~/idanode-test` directory:
 
 ```
-cd ~/testnet-builder
+cd ~/idanode-test
 mkdir data
 ```
 
-- After this, you should have the following folder structure exists in your `~/testnet-builder` directory:
+- After this, you should have the following folder structure exists in your `~/idanode-test` directory:
 
 ```
 ├── config-files
@@ -118,20 +118,20 @@ mkdir data
 
 ## 3. Create configuration files
 
-- Copy all scripts from `~/testnet-builder/genesis-scripts` to `~/idanode-headless/play`:
+- Copy all scripts from `~/idanode-test/genesis-scripts` to `~/idanode-headless/play`:
 
 ```
-cp -r ~/testnet-builder/genesis-scripts/* ~/testnet-builder/idanode-headless/play/
+cp -r ~/idanode-test/genesis-scripts/* ~/idanode-test/idanode-headless/play/
 ```
 
 - Now you can create the keys and addresses of the 12 witnesses by running the commands below:
 
 ```
-cd ~/testnet-builder/idanode-headless/play
+cd ~/idanode-test/idanode-headless/play
 node create_allConfig.js
 ```
 
-- After this, you should have files and folders like below exists in your `~/testnet-builder/data` directory:
+- After this, you should have files and folders like below exists in your `~/idanode-test/data` directory:
 
 ```
 ├── allAddress.jsonwrite something
@@ -158,10 +158,10 @@ rm -rf ~/.config/headless15/idanode*
 - Copy the renewed headless15’s configuration files to `~/.config`:
 
 ```
-cp -r ~/testnet-builder/data/headless15/ ~/.config/
+cp -r ~/idanode-test/data/headless15/ ~/.config/
 ```
 
-- Open `~/testnet-builder/data/config.json`, the json file has an array of 15 objects, each of the object contains a collection of name/value pairs like these:
+- Open `~/idanode-test/data/config.json`, the json file has an array of 15 objects, each of the object contains a collection of name/value pairs like these:
 
 ```
 {“
@@ -183,7 +183,7 @@ cp -r ~/testnet-builder/data/headless15/ ~/.config/
 
 - Copy the addresses of the last 3 objects, which represent **headless13**, **headless14**, and **headless15** respectively
 
-- Open `~/testnet-builder/idanode-headless/play/create_genesis.js`
+- Open `~/idanode-test/idanode-headless/play/create_genesis.js`
 
 - Replace the address value of `arrOutputs` (at line: 23) with the address value of **headless13**
 
@@ -193,7 +193,7 @@ cp -r ~/testnet-builder/data/headless15/ ~/.config/
 
 - Save the file
 
-- Now we can generate the genesis unit by running the command below from `~/testnet-builder/idanode-headless/play`:
+- Now we can generate the genesis unit by running the command below from `~/idanode-test/idanode-headless/play`:
 
 ```
 node create_genesis.js
@@ -209,7 +209,7 @@ node create_genesis.js
 
 - Before starting the hub and the witnesses, we need to update `exports.GENESIS_UNIT` in `~/testnet-build/config-files/constants.js` (at Line: 13) with the **hash** of the genesis unit we just created.
 
-- Open `testnet-builder/data/witnessAddress.json`, copy its data as shown below:
+- Open `idanode-test/data/witnessAddress.json`, copy its data as shown below:
 
 ```
 "5JW7CSFALLSWZSU3ILMVCYV62NAV5YNL",
@@ -226,14 +226,14 @@ node create_genesis.js
 "QZ6WCQCWXDGUXXJPWISOLILDBTHGNDOD"
 ```
 
-- Open `~/testnet-builder/config-files/hub-conf.js`, replace the value of `exports.initial_witnesses` (at Line: 26) with the data copied from `testnet-builder/data/witnessAddress.json`, save the file
+- Open `~/idanode-test/config-files/hub-conf.js`, replace the value of `exports.initial_witnesses` (at Line: 26) with the data copied from `idanode-test/data/witnessAddress.json`, save the file
 
-- Open `~/testnet-builder/config-files/explorer-conf.js`, replace the value of `exports.initial_witnesses` (at Line: 14) with the same data copied from `testnet-builder/data/witnessAddress.json`, save the file
+- Open `~/idanode-test/config-files/explorer-conf.js`, replace the value of `exports.initial_witnesses` (at Line: 14) with the same data copied from `idanode-test/data/witnessAddress.json`, save the file
 
-- Run `~/testnet-builder/deploy.sh` to copy all witness’ configuration files to the right place:
+- Run `~/idanode-test/deploy.sh` to copy all witness’ configuration files to the right place:
 
 ```
-cd ~/testnet-builder
+cd ~/idanode-test
 chmod +x deploy.sh
 ./deploy.sh
 ```
@@ -263,7 +263,7 @@ As we mentioned previously, after the hub and witnesses are started, we need to 
 
 ```
 rm -rf ~/.config/headless15/idanode*
-cd ~/testnet-builder/idanode-headless/play
+cd ~/idanode-test/idanode-headless/play
 node create_genesis.js
 ```
 
