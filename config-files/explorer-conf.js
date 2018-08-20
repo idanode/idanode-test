@@ -27,7 +27,7 @@ exports.initial_witnesses = [
 ];
 
 
-/*'wss://idanote.org/tg' */
+/*'wss://idanode.org/tg' */
 exports.initial_peers = [
 	'ws://127.0.0.1:6616'
 ];

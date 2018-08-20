@@ -1,13 +1,13 @@
 /*jslint node: true */
 "use strict";
-var conf = require('idanote-common/conf.js');
-var db = require('idanote-common/db.js');
-var storage = require('idanote-common/storage.js');
-var eventBus = require('idanote-common/event_bus.js');
-var mail = require('idanote-common/mail.js');
-var headlessWallet = require('idanote-headless');
-var desktopApp = require('idanote-common/desktop_app.js');
-var objectHash = require('idanote-common/object_hash.js');
+var conf = require('idanode-common/conf.js');
+var db = require('idanode-common/db.js');
+var storage = require('idanode-common/storage.js');
+var eventBus = require('idanode-common/event_bus.js');
+var mail = require('idanode-common/mail.js');
+var headlessWallet = require('idanode-headless');
+var desktopApp = require('idanode-common/desktop_app.js');
+var objectHash = require('idanode-common/object_hash.js');
 
 var WITNESSING_COST = 600; // size of typical witnessing unit
 var my_address;
@@ -47,8 +47,8 @@ function witness(onDone){
 		notifyAdminAboutFailedWitnessing(err);
 		setTimeout(onDone, 60000); // pause after error
 	}
-	var network = require('idanote-common/network.js');
-	var composer = require('idanote-common/composer.js');
+	var network = require('idanode-common/network.js');
+	var composer = require('idanode-common/composer.js');
 	if (!network.isConnected()){
 		console.log('not connected, skipping');
 		return onDone();

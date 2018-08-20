@@ -61,24 +61,24 @@ cat ~/.ssh/id_rsa.pub
 - Download the testnet-builder package from GitHub:
 
 ```
-git clone https://github.com/idanote/testnet-builder.git
+git clone https://github.com/idanode/testnet-builder.git
 ```
 
 - Get the rest of the packages and install them one by one:
 
 ```
 cd testnet-builder
-git clone https://github.com/idanote/idanote-hub.git
-git clone https://github.com/idanote/idanote-witness.git
-git clone https://github.com/idanote/idanote-headless.git
-git clone https://github.com/idanote/idanote-explorer.git
-cd idanote-hub
+git clone https://github.com/idanode/idanode-hub.git
+git clone https://github.com/idanode/idanode-witness.git
+git clone https://github.com/idanode/idanode-headless.git
+git clone https://github.com/idanode/idanode-explorer.git
+cd idanode-hub
 npm install
-cd ../idanote-witness
+cd ../idanode-witness
 npm install
-cd ../idanote-headless
+cd ../idanode-headless
 npm install
-cd ../idanote-explorer
+cd ../idanode-explorer
 npm install
 cd ../genesis-scripts
 npm install
@@ -110,24 +110,24 @@ mkdir data
 ├── Readme.md -- this file
 ├── remove-all-data.sh delete the database of hub, witness and headless in “~/.config/”
 ├── start.sh -- start up hub and 12 witnesses by using pm2
-├── idanote-explorer
-├── idanote-headless
-├── idanote-hub
-└── idanote-witness
+├── idanode-explorer
+├── idanode-headless
+├── idanode-hub
+└── idanode-witness
 ```
 
 ## 3. Create configuration files
 
-- Copy all scripts from `~/testnet-builder/genesis-scripts` to `~/idanote-headless/play`:
+- Copy all scripts from `~/testnet-builder/genesis-scripts` to `~/idanode-headless/play`:
 
 ```
-cp -r ~/testnet-builder/genesis-scripts/* ~/testnet-builder/idanote-headless/play/
+cp -r ~/testnet-builder/genesis-scripts/* ~/testnet-builder/idanode-headless/play/
 ```
 
 - Now you can create the keys and addresses of the 12 witnesses by running the commands below:
 
 ```
-cd ~/testnet-builder/idanote-headless/play
+cd ~/testnet-builder/idanode-headless/play
 node create_allConfig.js
 ```
 
@@ -147,12 +147,12 @@ node create_allConfig.js
 
 ## 4. Create the Genesis Unit
 
-In the following steps, we will start with headless15, assigned in `idanote-headless/play/package.json`, to send the payment to headless14 and generate the genesis unit accordingly.
+In the following steps, we will start with headless15, assigned in `idanode-headless/play/package.json`, to send the payment to headless14 and generate the genesis unit accordingly.
 
 - At first, delete headless15’s existing database configuration files from `~/.config/headless15`:
 
 ```
-rm -rf ~/.config/headless15/idanote*
+rm -rf ~/.config/headless15/idanode*
 ```
 
 - Copy the renewed headless15’s configuration files to `~/.config`:
@@ -183,7 +183,7 @@ cp -r ~/testnet-builder/data/headless15/ ~/.config/
 
 - Copy the addresses of the last 3 objects, which represent **headless13**, **headless14**, and **headless15** respectively
 
-- Open `~/testnet-builder/idanote-headless/play/create_genesis.js`
+- Open `~/testnet-builder/idanode-headless/play/create_genesis.js`
 
 - Replace the address value of `arrOutputs` (at line: 23) with the address value of **headless13**
 
@@ -193,7 +193,7 @@ cp -r ~/testnet-builder/data/headless15/ ~/.config/
 
 - Save the file
 
-- Now we can generate the genesis unit by running the command below from `~/testnet-builder/idanote-headless/play`:
+- Now we can generate the genesis unit by running the command below from `~/testnet-builder/idanode-headless/play`:
 
 ```
 node create_genesis.js
@@ -262,8 +262,8 @@ pm2 logs hub
 As we mentioned previously, after the hub and witnesses are started, we need to delete headless15’s database configuration file and run create_genesis.js one more time to broadcast the genesis unit:
 
 ```
-rm -rf ~/.config/headless15/idanote*
-cd ~/testnet-builder/idanote-headless/play
+rm -rf ~/.config/headless15/idanode*
+cd ~/testnet-builder/idanode-headless/play
 node create_genesis.js
 ```
 

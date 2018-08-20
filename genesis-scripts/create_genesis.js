@@ -2,14 +2,14 @@
 "use strict";
 
 const fs = require('fs');
-const db = require('idanote-common/db.js');
-const eventBus = require('idanote-common/event_bus.js');
-const constants = require('idanote-common/constants.js');
-var objectHash = require('idanote-common/object_hash.js');
+const db = require('idanode-common/db.js');
+const eventBus = require('idanode-common/event_bus.js');
+const constants = require('idanode-common/constants.js');
+var objectHash = require('idanode-common/object_hash.js');
 var Mnemonic = require('bitcore-mnemonic');
-var ecdsaSig = require('idanote-common/signature.js');
-var validation = require('idanote-common/validation.js');
-var headlessWallet = require('idanote-headless');
+var ecdsaSig = require('idanode-common/signature.js');
+var validation = require('idanode-common/validation.js');
+var headlessWallet = require('idanode-headless');
 
 const witness_budget = 1000000;
 const witness_budget_count = 8;
@@ -39,8 +39,8 @@ for (let address of allAddress) {           // initial the payment arrOutputs
 
 function createPayment(from_address){
     console.log('starting createPayment');
-    var composer = require('idanote-common/composer.js');
-    var network = require('idanote-common/network.js');
+    var composer = require('idanode-common/composer.js');
+    var network = require('idanode-common/network.js');
     var callbacks = composer.getSavingCallbacks({
         ifNotEnoughFunds: onError,
         ifError: onError,
@@ -142,8 +142,8 @@ var signer = {
 };
 
 function createGenesisUnit(witnesses, onDone) {
-    var composer = require('idanote-common/composer.js');
-    var network = require('idanote-common/network.js');
+    var composer = require('idanode-common/composer.js');
+    var network = require('idanode-common/network.js');
 
     var savingCallbacks = composer.getSavingCallbacks({
         ifNotEnoughFunds: onError,

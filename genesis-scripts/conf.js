@@ -19,7 +19,7 @@ exports.payout_address = 'WHERE THE MONEY CAN BE SENT TO';
 exports.KEYS_FILENAME = 'keys.json';
 
 // exports.database.host = 'mysql.cx9e4ce1qjjs.ap-southeast-2.rds.amazonaws.com';
-// exports.database.password = 'idanote';
+// exports.database.password = 'idanode';
 // where logs are written to (absolute path).  Default is log.txt in app data directory
 //exports.LOG_FILENAME = '/dev/null';
 

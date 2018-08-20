@@ -18,7 +18,7 @@ var fs = require('fs');
 var crypto = require('crypto');
 var Mnemonic = require('bitcore-mnemonic');
 var Bitcore = require('bitcore-lib');
-var objectHash = require('idanote-common/object_hash.js');
+var objectHash = require('idanode-common/object_hash.js');
 
 var configArray = [];
 
