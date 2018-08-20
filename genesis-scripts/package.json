@@ -1,0 +1,27 @@
+{
+  "name": "headless15",
+  "description": "idanote witness",
+  "author": "idanote",
+  "version": "0.1.0",
+  "main": "start.js",
+  "keywords": [
+    "witness",
+    "idanote"
+  ],
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/idanote/idanote-witness.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/idanote/idanote-witness/issues"
+  },
+  "browser": {
+    "request": "browser-request",
+    "secp256k1": "secp256k1/js"
+  },
+  "dependencies": {
+     "idanote-common": "git+https://github.com/idanote/idanote-common.git",
+    "idanote-headless": "git+https://github.com/idanote/idanote-headless.git"
+  }
+}
