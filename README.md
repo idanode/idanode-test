@@ -61,7 +61,7 @@ cat ~/.ssh/id_rsa.pub
 - Download the testnet-builder package from GitHub:
 
 ```
-git clone https://github.com/idanode/testnet-builder.git
+git clone https://github.com/idanode/idanode-test.git
 ```
 
 - Get the rest of the packages and install them one by one:
