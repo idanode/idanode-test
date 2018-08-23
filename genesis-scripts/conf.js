@@ -8,7 +8,7 @@ exports.bLight = false;
 exports.database = {};
 //exports.storage = 'mysql';
 exports.WS_PROTOCOL = 'ws://';
-exports.hub = '127.0.0.1:6616';
+exports.hub = '18.191.214.42:6616';
 exports.KEYS_FILENAME = 'keys.json';
 
 exports.storage = 'sqlite';
